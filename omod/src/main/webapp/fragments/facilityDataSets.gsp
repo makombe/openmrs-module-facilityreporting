@@ -68,20 +68,20 @@
 
     <div>
         <div ng-repeat = "data in reportList">
-            <div class="form-group row">
+            <div class="table-responsive" style="padding-top: 30px" >
                 <fieldset class=" scheduler-border">
                 <legend class="scheduler-border">{{data.datasetName}}</legend>
-                <div ng-repeat ="indicator in data.indicators" class="table-responsive">
+                <div  class="table-responsive">
                     <table class="table table-striped tables">
-                        <tr>
-                            <td>
+                        <tr ng-repeat ="indicator in data.indicators"  class="column b-color">
+                            <td class="set-table-td-description-size">
                                 {{indicator.name}}:
                             </td>
-                            <td>
+                            <td class="set-table-td-input-size">
                                 <input class="form-control" type="number" ng-model="typeValues[indicator.id]">
 
                             </td>
-                            <td></td>
+                            <td class="set-third-column-size"></td>
                         </tr>
                     </table>
 
@@ -91,8 +91,12 @@
             </div>
         </div>
         <div>
+            <button type="button"><img
+                    src="${ui.resourceLink("kenyaui", "images/glyphs/cancel.png")}"/>
+                Cancel</button>
             <button type="button" ng-click="savReportDataSets()" class="saveData" id="button1"
-            >Save</button>
+            >
+                <img src="${ ui.resourceLink("kenyaui", "images/glyphs/ok.png") }" />Save</button>
         </div>
     </div>
 

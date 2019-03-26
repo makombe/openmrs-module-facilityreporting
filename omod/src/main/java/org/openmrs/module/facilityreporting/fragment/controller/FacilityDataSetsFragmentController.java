@@ -52,30 +52,33 @@ public class FacilityDataSetsFragmentController {
 	public void saveDataSetReport(@RequestParam("payload") String payload, @RequestParam("reportId") FacilityReport report,
 	        @RequestParam("datasetId") FacilityReportDataset dataset) throws ParseException {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		FacilityReportDataset dt = new FacilityReportDataset();
 		
-		FacilityReportData data = new FacilityReportData();
 		FacilityreportingService service = org.openmrs.api.context.Context.getService(FacilityreportingService.class);
 		
 		ObjectMapper mapper = new ObjectMapper();
+		
 		try {
 			
 			JsonNode jsonNode = mapper.readTree(payload);
 			JsonNode facilityData = jsonNode.get("dataSetResults");
 			for (int i = 0; i < facilityData.size(); i++) {
+				FacilityReportData data = new FacilityReportData();
+				
 				JsonNode datasetJson = facilityData.get(i);
-				//JsonNode dasetId = datasetJson.get("datasetId");
+				dt.setId(datasetJson.get("datasetId").getIntValue());
 				String startDate = datasetJson.get("startDate").getValueAsText();
 				String endDate = datasetJson.get("endDate").getValueAsText();
-				JsonNode childNode1 = mapper.createObjectNode();
-				((ObjectNode) childNode1).put("dataset", datasetJson);
 				data.setReport(report);
-				data.setDataset(dataset);
+				data.setDataset(dt);
 				data.setValue(datasetJson.toString());
 				data.setStartDate(df.parse(startDate));
 				data.setEndDate(df.parse(endDate));
+				
 				service.saveOrUpdateReportData(data);
 				Context.flushSession();
 			}
+			
 		}
 		catch (IOException e) {
 			e.printStackTrace();

@@ -83,6 +83,10 @@
                     onclick="ui.navigate('${ ui.pageLink("facilityreporting", "newReportDatasetForm", [reportId: report.id, returnUrl: ui.pageLink("facilityreporting", "reportDatasetList", [reportId: report.id, returnUrl:ui.pageLink("facilityreporting", "facilityReportingHome")]) ])}')">
                 <img src="${ui.resourceLink("kenyaui", "images/glyphs/add.png")}"/> Add Dataset
             </button>
+        <button class="addConfiguration" name="addConfiguration" type="button"
+                onclick="ui.navigate('${ ui.pageLink("facilityreporting", "facilityDatasetEntryForm", [reportId: report.id,  returnUrl: ui.thisUrl() ])}')">
+            <img src="${ui.resourceLink("kenyaui", "images/glyphs/add.png")}"/> Enter all Dataset
+        </button>
 
 
     </div>
