@@ -79,6 +79,42 @@
 
 </div>
     <div>
+        New Table configurations
+        <table class="table table-striped tables">
+          <tr>
+          <th>Report</th>
+           <th>Start Date</th>
+           <th>End Date</th>
+           <th>Actions</th>
+           </tr>
+            <tr>
+                <td >
+                    MOH 731
+                </td>
+                <td >
+                    Jan 1st
+
+                </td>
+                <td>
+                    Jan 31st
+                </td>
+                <td>
+                    <button class="addConfiguration" name="addConfiguration" type="button"
+                            onclick="ui.navigate('${ ui.pageLink("facilityreporting", "facilityDatasetEntryForm", [reportId: report.id,  returnUrl: ui.thisUrl() ])}')">
+                        <img src="${ui.resourceLink("kenyaui", "images/glyphs/add.png")}"/> Enter Data
+                    </button>
+                    <button type="button"
+                            onclick="ui.navigate('${ ui.pageLink("facilityreporting", "viewAllReportData", [reportId: report.id,  returnUrl: ui.thisUrl() ])}')">
+                        <img src="${ui.resourceLink("kenyaui", "images/glyphs/view.png")}"/>View Data
+                    </button>
+                    <button type="button">
+
+                        <img src="${ui.resourceLink("kenyaui", "images/glyphs/edit.png")}"/>   Edit</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
             <button class="addConfiguration" name="addConfiguration" type="button"
                     onclick="ui.navigate('${ ui.pageLink("facilityreporting", "newReportDatasetForm", [reportId: report.id, returnUrl: ui.pageLink("facilityreporting", "reportDatasetList", [reportId: report.id, returnUrl:ui.pageLink("facilityreporting", "facilityReportingHome")]) ])}')">
                 <img src="${ui.resourceLink("kenyaui", "images/glyphs/add.png")}"/> Add Dataset

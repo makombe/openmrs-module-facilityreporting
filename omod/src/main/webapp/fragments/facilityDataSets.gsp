@@ -75,7 +75,7 @@
                     <table class="table table-striped tables">
                         <tr ng-repeat ="indicator in data.indicators"  class="column b-color">
                             <td class="set-table-td-description-size">
-                                {{indicator.name}}:
+                                {{indicator.description}}:
                             </td>
                             <td class="set-table-td-input-size">
                                 <input class="form-control" type="number" ng-model="typeValues[indicator.id]">

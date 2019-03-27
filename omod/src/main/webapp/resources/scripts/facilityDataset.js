@@ -4,6 +4,7 @@ controller('FacilityDataSetCtrl', ['$scope', '$window', '$location', '$timeout',
         var datasetLists = OpenMRS.datasetLists;
         var singleDataset = OpenMRS.singleDataset;
         var dataNodes = OpenMRS.dataNodes;
+        var reportData = OpenMRS.reportData;
         var editDatasetPayload = OpenMRS.editDatasetPayload;
         var datasetHstoryPayload= OpenMRS.datasetHstoryPayload;
 
@@ -49,6 +50,14 @@ controller('FacilityDataSetCtrl', ['$scope', '$window', '$location', '$timeout',
                 $q.all(datasetHstoryPayload)
                     .then(function(results) {
                         $scope.datasetHistoryList = results ;
+                    });
+
+            },100);
+
+            $timeout(function() {
+                $q.all(reportData)
+                    .then(function(results) {
+                        $scope.reportData = results ;
                     });
 
             },100);
@@ -112,7 +121,8 @@ controller('FacilityDataSetCtrl', ['$scope', '$window', '$location', '$timeout',
                 current.indicators.push({
                     id: item.id,
                     name: item.name,
-                    value: item.value
+                    value: item.value,
+                    description:item.description
                 });
 
                 return r;
